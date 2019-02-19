@@ -60,9 +60,9 @@ import UIKit
 
     @objc public let iOS11: Bool = (Int(UIDevice.current.systemVersion.components(separatedBy: ".").first ?? "") ?? 0) >= 11
 
-    @objc public var extStringInfo: [String: String] = [:]
+    @objc private var extStringInfo: [String: String] = [:]
 
-    @objc public var extIntInfo: [String: Int] = [:]
+    @objc private var extIntInfo: [String: Int] = [:]
 
 
     @objc public class var shared: MixDevice {
