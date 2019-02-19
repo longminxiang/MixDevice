@@ -65,6 +65,15 @@ import UIKit
     @objc public var extIntInfo: [String: Int] = [:]
 
 
+    @objc public class var shared: MixDevice {
+        struct Singleton {
+            static let instance: MixDevice = {
+                return MixDevice()
+            }()
+        }
+        return Singleton.instance
+    }
+
     @objc public func jsonString() -> String? {
         guard let data = self.jsonData() else {
             return nil

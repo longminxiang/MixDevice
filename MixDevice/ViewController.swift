@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let device = MixDevice()
+        let device = MixDevice.shared
         device.add(key: "stringKey", string: "stringValue")
         device.add(key: "intKey", intValue: 223)
         print(device.jsonObject() ?? "")
