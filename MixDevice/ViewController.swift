@@ -14,9 +14,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let device = MixDevice.shared
-        device.add("xxxxxx", "dfdsfsd")
-        device.add("yyyyyy", 12222)
-        device.add("zzzz", ["cc": 33])
+        device.add("xxxxxx", key: "dfdsfsd")
+        device.add(123232, key: "yyyyyy")
+        device.add(["cc": 33], key: "zzzz")
         print(device.jsonObject() ?? "")
     }
 }

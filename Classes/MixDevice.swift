@@ -26,7 +26,7 @@ import UIKit
     ///version
     @objc public let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     ///build number
-    @objc public let appBuildNum: Int = Bundle.main.infoDictionary?["CFBundleVersion"] as? Int ?? 0
+    @objc public let appBuildNum: Int = Int(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "") ?? 0
     ///pixel ratio
     @objc public let pixelRatio: CGFloat = UIScreen.main.currentMode?.pixelAspectRatio ?? 0
     ///scale 2.0/3.0
@@ -51,8 +51,6 @@ import UIKit
     @objc public let iPhone7Plus: Bool = UIScreen.main.bounds.size.height == 736 && UIScreen.main.bounds.size.width == 414
     ///is iphoneX
     @objc public let iPhoneX: Bool = UIScreen.main.bounds.size.height >= 812
-    ///is ios11
-    @objc public let iOS11: Bool = (Int(UIDevice.current.systemVersion.components(separatedBy: ".").first ?? "") ?? 0) >= 11
     ///extionsion info
     @objc private var extInfo: [String: Any] = [:]
 
@@ -87,7 +85,6 @@ import UIKit
         case iPhone5
         case iPhone7Plus
         case iPhoneX
-        case iOS11
     }
 
     @objc public func jsonString() -> String? {
@@ -116,7 +113,7 @@ import UIKit
         return try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
     }
 
-    @objc public func add(_ key: String, _ value: Any) {
+    @objc public func add(_ value: Any, key: String) {
         self.extInfo[key] = value
     }
 }
